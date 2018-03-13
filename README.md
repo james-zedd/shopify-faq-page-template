@@ -1,7 +1,7 @@
 # Shopify FAQ Page Template using Pure CSS (no JS)
 <h2>Notes:</h2>
 <ul>
-  <li>Dependenct on Font Awesome. CDN included in /sections/page-faq.liquid</li>
+  <li>Dependency on Font Awesome. CDN included in /sections/page-faq.liquid</li>
   <li>Originally coded to work with Loft Shopify Theme (<a href="https://themes.shopify.com/themes/loft/styles/nashville">https://themes.shopify.com/themes/loft/styles/nashville</a>). Core of the code is within the {% for %} loop.</li>
 </ul>
 <hr />
@@ -12,3 +12,6 @@
   <li>Within the Shopify theme editor, navigate to your page</li>
   <li>On the left of the page, add one block for every FAQ you would like on your page</li>
 </ol>
+<hr />
+<h3>Not Working? Have Questions?</h3>
+<p>Please contact me if you are having any challenges or have any questions regarding this.</p>
