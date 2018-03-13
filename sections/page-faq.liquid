@@ -1,0 +1,98 @@
+<div class="grid--full">
+  <div class="blog-featured-image" style="background-color: white; {% if section.settings.image %}background-image: url({{ section.settings.image | img_url: '1920x', format: 'pjpg' }}); height: 400px;{% else %}{% endif %};">
+  </div>
+  <div class="grid--full page-wrapper">
+    <div class="grid__item large--two-thirds push--large--one-sixth">
+      <h1 class="page-title">{{ page.title }}</h1>
+
+      {%for block in section.blocks %}
+
+        {% if block.type == 'faq' %}
+        <div class="accordion {{ block.id }}">
+          <input id="toggle-{{ block.id }}" type="checkbox">
+          <label for="toggle-{{ block.id }}"><h2>{{ block.settings.faq_question}}</h2></label>
+          <div class="response">
+            {{ block.settings.faq_answer }}
+          </div>
+        </div>
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .accordion {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 12px 48px;
+    border-radius: 8px;
+  }
+  input[type="checkbox"] {
+    display: none;
+  }
+  label {
+    display: block;
+    padding: 12px 0 0;
+    cursor: pointer;
+    position: relative;
+  }
+  label:after {
+    content:'\f055';
+    display: block;
+    font-family: fontawesome;
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: -36px;
+    transform: translateY(-25%);
+  }
+  .response {
+    padding: 0;
+    max-height: 0px;
+    overflow: hidden;
+    transition: all 100ms ease-in-out;
+  }
+
+  input[type="checkbox"]:checked ~ .response {
+    padding: 24px 0 12px 0;
+    max-height: 900px;
+  }
+  input[type="checkbox"]:checked ~ label:after {
+    content: '\f056';
+  }
+</style>
+
+{% schema %}
+ {
+   "name": "FAQ Page",
+   "settings": [
+     {
+       "type": "image_picker",
+       "id": "image",
+       "label": "Banner image",
+       "info": "1920 x 400px .png recommended"
+     }
+   ],
+   "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "faq_question",
+          "label": "FAQ Question"
+        },
+        {
+          "type": "textarea",
+          "id": "faq_answer",
+          "label": "FAQ Answer (HTML allowed)"
+        }
+      ]
+    }
+   ]
+ }
+{% endschema %}
