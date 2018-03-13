@@ -1,0 +1,1 @@
+# shopify-faq-page-template
